@@ -1,22 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout Summary</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Checkout Summary</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+        <style>
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+        }
 
-<body>
-    <div class="container">
-        <h1 class="my-4">Checkout Summary</h1>
-        <ul id="checkout-summary-items" class="list-group mb-3"></ul>
-        <p id="checkout-total-price" class="fw-bold">Total: $0.00</p>
-        <button type="button" class="btn btn-primary" onclick="confirmOrder()">Confirm Order</button>
-    </div>
+        .container {
+            background: url(https://images.unsplash.com/photo-1695131020187-d3dcdab5016b?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cGFwZXIlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww);
+            background-size: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-top: 50px;
+        }
+        .imgfit {
+            width: 100%; /* Full width of the container */
+            overflow: hidden; /* Hide any overflow */
+        }
 
-    <script>
+        .hill-checkout {
+            width: 100%; /* Make the image responsive */
+            height: auto; /* Maintain aspect ratio */
+            object-fit: cover; /* Cover the area without distortion */
+        }
+
+
+        h1 {
+            color: #343a40; /* Dark gray for header */
+        }
+
+        .list-group-item {
+            border: none; /* Remove borders for a cleaner look */
+        }
+
+        .total-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007bff; /* Bootstrap primary color */
+        }
+
+        button {
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+    </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1 class="my-4 text-center">Checkout Summary</h1>
+            <ul id="checkout-summary-items" class="list-group mb-3"></ul>
+            <p id="checkout-total-price" class="total-price text-center">Total:
+                $0.00</p>
+            <div class="text-center">
+                <button type="button" class="btn btn-primary"
+                    onclick="confirmOrder()">Confirm Order</button>
+            </div>
+        </div>
+        <div class="imgfit">
+            <img src="./img/footer-hill.png" alt="Footer Image"
+                class="hill-checkout">
+        </div>
+
+        <script>
         // Fetch cart from localStorage and display it
         const cart = JSON.parse(localStorage.getItem('cart')) || {};
         const checkoutSummaryItems = document.getElementById('checkout-summary-items');
@@ -31,9 +88,9 @@
             li.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
 
             li.innerHTML = `
-        <div>${item.quantity} x ${product}</div>
-        <span>$${item.totalPrice.toFixed(2)}</span>
-      `;
+                <div>${item.quantity} x ${product}</div>
+                <span>$${item.totalPrice.toFixed(2)}</span>
+            `;
             checkoutSummaryItems.appendChild(li);
         }
 
@@ -45,7 +102,8 @@
             window.location.href = 'index.html'; // Redirect to thank you page
         }
     </script>
-    <script src="script.js"></script>
-</body>
+        <script src="script.js"></script>
+
+    </body>
 
 </html>
