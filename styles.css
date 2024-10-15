@@ -305,17 +305,21 @@ h2 {
 /************** Individual Product **********************/ 
 .product-container {
     display: flex;
-    align-items: flex-start;
-    max-width: 900px;
-    margin: auto;
-    padding: 1.5rem;
+    justify-content: center;
 }
 
 .product-image {
-    flex: 1;
     height: 300px;
     width: 300px;
-    margin-right: 100px;
+    margin-right: 20px;
+}
+
+@media (max-width: 768px) {
+    .product-image {
+        height: 100%;
+        width: 100%;
+        /* Adjust height for smaller screens */
+    }
 }
 
 .quantity {
